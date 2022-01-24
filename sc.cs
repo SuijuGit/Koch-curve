@@ -7,26 +7,26 @@ public class sc : MonoBehaviour
     public GameObject st;
     void Start()
     {
-        //‰ñ”ƒJƒEƒ“ƒg
+        //å›æ•°ã‚«ã‚¦ãƒ³ãƒˆ
         GameObject.Find("Main Camera").GetComponent<count>().countda++;
         int count = GameObject.Find("Main Camera").GetComponent<count>().countda;
         if (count < 10000)
         {
-            //ˆê•Ó‚Ì’·‚³‚ğ•Ï‚¦‚½‚¢‚Æ‚«‚Í‚±‚ê‚ÆInspector‚Ìpositon(x‚Æz)Ascale.x‚ğƒ`ƒFƒ“ƒW(n”{‚¸‚Â‚·‚é)
+            //ä¸€è¾ºã®é•·ã•ã‚’å¤‰ãˆãŸã„ã¨ãã¯ã“ã‚Œã¨Inspectorã®positon(xã¨z)ã€scale.xã‚’ãƒã‚§ãƒ³ã‚¸(nå€ãšã¤ã™ã‚‹)
             int edge = 30;
-            //ü‚Ì‘¾‚³‚ğ•Ï‚¦‚½‚¢‚Æ‚«‚Í‚±‚±‚ÆInspector‚Ìscale.z‚ğƒ`ƒFƒ“ƒWi‚±‚ê‚Æscale.z‚ª‚©‚¯‚Ä10‚É‚È‚é‚æ‚¤‚É‚·‚éj
+            //ç·šã®å¤ªã•ã‚’å¤‰ãˆãŸã„ã¨ãã¯ã“ã“ã¨Inspectorã®scale.zã‚’ãƒã‚§ãƒ³ã‚¸ï¼ˆã“ã‚Œã¨scale.zãŒã‹ã‘ã¦10ã«ãªã‚‹ã‚ˆã†ã«ã™ã‚‹ï¼‰
             int width = 10000;            
 
-            //‰ŠúƒXƒP[ƒ‹
+            //åˆæœŸã‚¹ã‚±ãƒ¼ãƒ«
             Vector3 scl = this.gameObject.transform.localScale;
 
-            //‚‚³
+            //é«˜ã•
             float root = 5 / (2 * Mathf.Sqrt(3));
-            //‰¡
+            //æ¨ª
             float x = 5 / 6f;
             float x2 = 10 / 3f;
 
-            //‘å‚«‚³’²®
+            //å¤§ãã•èª¿æ•´
             int size = 0;
             if (count != 3 && count != 1 && count != 2)
             {
@@ -35,59 +35,59 @@ public class sc : MonoBehaviour
             }
             if (size != 0)
             {
-                scl.x = scl.x*Mathf.Pow(3, size);
+                scl.x *= Mathf.Pow(3, size);
             }
             int quotient =(int) Mathf.Pow(3, size);
 
 
-            //ˆê–{–Ú
+            //ä¸€æœ¬ç›®
             GameObject stick = Instantiate(st);
-            //e‚ğì‚Á‚ÄAƒXƒP[ƒ‹‚ÆÀ•W‚ğw’è
+            //è¦ªã‚’ä½œã£ã¦ã€ã‚¹ã‚±ãƒ¼ãƒ«ã¨åº§æ¨™ã‚’æŒ‡å®š
             stick.transform.SetParent(this.gameObject.transform);
             stick.transform.localScale = new Vector3(scl.x/edge, 1, 1);
             stick.transform.rotation = this.gameObject.transform.rotation;
             Vector3 vec = new Vector3(-x, 0, root * (width / quotient));
             stick.transform.localPosition = vec;
-            //e‚ğ‰ğœ‚µ‚Ä‰ñ“]‚³‚¹‚é
+            //è¦ªã‚’è§£é™¤ã—ã¦å›è»¢ã•ã›ã‚‹
             stick.transform.SetParent(null);
             Vector3 angle = transform.eulerAngles;
             stick.transform.rotation = Quaternion.Euler(0, angle.y - 60, 0);
 
-            //“ñ–{–Ú
+            //äºŒæœ¬ç›®
             GameObject stick2 = Instantiate(st);
-            //e‚ğì‚Á‚ÄAƒXƒP[ƒ‹‚ÆÀ•W‚ğw’è
+            //è¦ªã‚’ä½œã£ã¦ã€ã‚¹ã‚±ãƒ¼ãƒ«ã¨åº§æ¨™ã‚’æŒ‡å®š
             stick2.transform.SetParent(this.gameObject.transform);
             stick2.transform.localScale = new Vector3(scl.x / edge, 1, 1);
             stick2.transform.rotation = this.gameObject.transform.rotation;
             Vector3 vec2 = new Vector3(x, 0, root * (width /quotient));
             stick2.transform.localPosition = vec2;
-            //e‚ğ‰ğœ‚µ‚Ä‰ñ“]‚³‚¹‚é
+            //è¦ªã‚’è§£é™¤ã—ã¦å›è»¢ã•ã›ã‚‹
             stick2.transform.SetParent(null);
             Vector3 angle2 = transform.eulerAngles;
             stick2.transform.rotation = Quaternion.Euler(0, angle2.y + 60, 0);
 
-            //O–{–Ú
+            //ä¸‰æœ¬ç›®
             GameObject stick3 = Instantiate(st);
-            //e‚ğì‚Á‚ÄAƒXƒP[ƒ‹‚ÆÀ•W‚ğw’è
+            //è¦ªã‚’ä½œã£ã¦ã€ã‚¹ã‚±ãƒ¼ãƒ«ã¨åº§æ¨™ã‚’æŒ‡å®š
             stick3.transform.SetParent(this.gameObject.transform);
             stick3.transform.localScale = new Vector3(scl.x / edge, 1, 1);
             stick3.transform.rotation = this.gameObject.transform.rotation;
             Vector3 vec3 = new Vector3(x2, 0, 0);
             stick3.transform.localPosition = vec3;
-            //e‚ğ‰ğœ‚µ‚Ä‰ñ“]‚³‚¹‚é
+            //è¦ªã‚’è§£é™¤ã—ã¦å›è»¢ã•ã›ã‚‹
             stick3.transform.SetParent(null);
             Vector3 angle3 = transform.eulerAngles;
             stick3.transform.rotation = Quaternion.Euler(0, angle3.y, 0);
 
-            //l–{–Ú
+            //å››æœ¬ç›®
             GameObject stick4 = Instantiate(st);
-            //e‚ğì‚Á‚ÄAƒXƒP[ƒ‹‚ÆÀ•W‚ğw’è
+            //è¦ªã‚’ä½œã£ã¦ã€ã‚¹ã‚±ãƒ¼ãƒ«ã¨åº§æ¨™ã‚’æŒ‡å®š
             stick4.transform.SetParent(this.gameObject.transform);
             stick4.transform.localScale = new Vector3(scl.x / edge, 1, 1);
             stick4.transform.rotation = this.gameObject.transform.rotation;
             Vector3 vec4 = new Vector3(-x2, 0, 0);
             stick4.transform.localPosition = vec4;
-            //e‚ğ‰ğœ‚µ‚Ä‰ñ“]‚³‚¹‚é
+            //è¦ªã‚’è§£é™¤ã—ã¦å›è»¢ã•ã›ã‚‹
             stick4.transform.SetParent(null);
             Vector3 angle4 = transform.eulerAngles;
             stick4.transform.rotation = Quaternion.Euler(0, angle4.y, 0);
